@@ -1,0 +1,17 @@
+# Node/Vite
+node_modules/
+dist/
+.env
+.env.local
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# build artifacts
+coverage/
+*.local
+
+# archive assets (retained for reference only)
+archive/tmp/

@@ -1,12 +1,36 @@
-# React + Vite
+# RenewG Web Experience
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + Vite single-page site for RenewG, showcasing solar EPC, storage, EV charging, and product trading capabilities. The interface uses a green-energy design system with responsive sections for services, projects, and contact information.
 
-Currently, two official plugins are available:
+## Local Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Visit the URL shown in the terminal (default `http://localhost:5173`).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Production Build
+
+```bash
+npm run build
+```
+
+The optimized output is written to `dist/`. Preview it locally with `npm run preview`.
+
+## Deployment
+
+The repository ships with a GitHub Actions workflow (`.github/workflows/deploy.yml`) that builds the project and publishes the `dist/` artifact to GitHub Pages whenever the `main` branch is updated.
+
+If you prefer to deploy manually, run `npm run build` and push the contents of `dist/` to any static host.
+
+## Project Structure
+
+- `src/` – React components and styling (`App.jsx`, `App.css`, `index.css`).
+- `public/` – Static assets served at the site root (favicon, logo).
+- `archive/static-site/` – Original static HTML/CSS/JS prototype retained for reference.
+
+## License
+
+Copyright © RenewG. All rights reserved.

@@ -6,6 +6,7 @@ import iconHybrid from './assets/icon-hybrid.svg';
 import iconOffGrid from './assets/icon-offgrid.svg';
 import iconEv from './assets/icon-ev.svg';
 import iconTrading from './assets/icon-trading.svg';
+import iconWhatsapp from './assets/icon-whatsapp.svg';
 import './App.css';
 
 const navLinks = [
@@ -129,6 +130,25 @@ const heroStack = [
   'Digital monitoring & O&M services',
 ];
 
+const whatsappNumber = '918050245123';
+const secondaryNumber = '918050863123';
+const whatsappHref = `https://wa.me/${whatsappNumber}`;
+
+const phoneContacts = [
+  {
+    label: 'Consultation',
+    tel: `+${whatsappNumber}`,
+    display: '+91 80502 45123',
+    isWhatsapp: true,
+  },
+  {
+    label: 'Operations',
+    tel: `+${secondaryNumber}`,
+    display: '+91 80508 63123',
+    isWhatsapp: false,
+  },
+];
+
 export default function App() {
   const [navOpen, setNavOpen] = useState(false);
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -180,8 +200,11 @@ export default function App() {
                 customers. We engineer every site for reliability, regulatory compliance, and measurable ROI.
               </p>
               <div className="hero-actions">
+                <a className="btn whatsapp" href={whatsappHref} target="_blank" rel="noreferrer">
+                  <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
+                  WhatsApp Consultation
+                </a>
                 <a className="btn primary" href="#contact">Talk to Our Experts</a>
-                <a className="btn ghost" href="#services">Explore Capabilities</a>
               </div>
               <div className="hero-metrics">
                 {metrics.map((metric) => (
@@ -346,10 +369,21 @@ export default function App() {
               Partner with RenewG to design, build, and operate sustainable energy systems tailored to your business or community
               goals.
             </p>
-            <a className="btn primary" href="mailto:hello@renewg.in">Schedule a consultation</a>
+            <div className="cta-actions">
+              <a className="btn primary" href="mailto:hello@renewg.in">Schedule a consultation</a>
+              <a className="btn whatsapp light" href={whatsappHref} target="_blank" rel="noreferrer">
+                <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
         </section>
       </main>
+
+      <a className="whatsapp-float" href={whatsappHref} target="_blank" rel="noreferrer">
+        <img src={iconWhatsapp} alt="" aria-hidden="true" />
+        <span className="sr-only">Chat with RenewG on WhatsApp</span>
+      </a>
 
       <footer className="site-footer">
         <div className="container footer-grid">
@@ -362,7 +396,13 @@ export default function App() {
           <div>
             <h3>Contact</h3>
             <ul>
-              <li>Phone: +91 98765 43210</li>
+              {phoneContacts.map((contact) => (
+                <li key={contact.tel}>
+                  {contact.label}:{' '}
+                  <a href={`tel:${contact.tel}`}>{contact.display}</a>
+                  {contact.isWhatsapp ? ' (WhatsApp)' : ''}
+                </li>
+              ))}
               <li>Email: hello@renewg.in</li>
               <li>Address: Suncity Thokkutu, 1st Floor, No. 3-3 (39), Mangaluru Taluku, Ullal, Dakshina Kannada, Karnataka - 575017</li>
             </ul>

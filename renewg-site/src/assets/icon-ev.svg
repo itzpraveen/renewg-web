@@ -1,8 +1,7 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EV charging">
-  <rect x="14" y="22" width="36" height="18" rx="8" fill="#F5FFF9" stroke="#2EB872" stroke-width="2.25" />
-  <path d="M22 26h16l8 10H22V26z" fill="#8DE4BC" />
-  <circle cx="26" cy="46" r="5" fill="#1C8F55" />
-  <circle cx="42" cy="46" r="5" fill="#1C8F55" />
-  <path d="M46 26l6-8" stroke="#2EB872" stroke-width="2.25" stroke-linecap="round" />
-  <path d="M52 18v10" stroke="#2EB872" stroke-width="2.25" stroke-linecap="round" />
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EV charging (isometric)">
+  <!-- EV capsule iso -->
+  <polygon points="12,36 32,30 50,36 30,42" fill="#FFFFFF" stroke="#BDEFD6" stroke-width="2" />
+  <circle cx="24" cy="42" r="4" fill="#2EB872" />
+  <circle cx="40" cy="40" r="4" fill="#2EB872" opacity=".85" />
+  <polygon points="16,34 32,30 40,32 24,38" fill="#A8F2C7" />
 </svg>

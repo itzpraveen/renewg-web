@@ -1,6 +1,8 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="On-grid solar">
-  <rect x="10" y="18" width="44" height="28" rx="10" fill="#F5FFF9" stroke="#2EB872" stroke-width="2.25" />
-  <path d="M18 24h28M18 32h28M18 40h28" stroke="#8DE4BC" stroke-width="2.25" stroke-linecap="round" />
-  <path d="M29 12h6a2 2 0 0 1 2 2v2H27v-2a2 2 0 0 1 2-2z" fill="#2EB872" />
-  <circle cx="32" cy="46" r="6" fill="#1C8F55" />
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="On-grid solar (isometric)">
+  <!-- base slab -->
+  <polygon points="10,30 26,24 54,34 38,40" fill="#FFFFFF" stroke="#BDEFD6" stroke-width="2" />
+  <!-- panel tile -->
+  <polygon points="14,29 26,24 42,30 30,35" fill="#2EB872" />
+  <!-- connector to grid -->
+  <polygon points="42,30 50,33 50,38 42,35" fill="#A8F2C7" />
 </svg>

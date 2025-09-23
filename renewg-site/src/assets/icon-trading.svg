@@ -1,8 +1,12 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Product trading">
-  <rect x="16" y="16" width="32" height="32" rx="10" fill="#F5FFF9" stroke="#2EB872" stroke-width="2.25" />
-  <path d="M22 40l8-12 6 8 8-14" stroke="#2EB872" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="22" cy="40" r="4" fill="#1C8F55" />
-  <circle cx="30" cy="28" r="4" fill="#8DE4BC" />
-  <circle cx="36" cy="36" r="4" fill="#1C8F55" />
-  <circle cx="42" cy="24" r="4" fill="#8DE4BC" />
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Product trading (isometric)">
+  <!-- iso box -->
+  <polygon points="18,22 34,16 46,20 30,26" fill="#FFFFFF" stroke="#BDEFD6" stroke-width="2" />
+  <polygon points="18,22 30,26 30,40 18,36" fill="#FFFFFF" stroke="#BDEFD6" stroke-width="2" />
+  <polygon points="30,26 46,20 46,34 30,40" fill="#FFFFFF" stroke="#BDEFD6" stroke-width="2" />
+  <!-- growth path -->
+  <path d="M22 34l6-8 5 6 7-10" stroke="#2EB872" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="22" cy="34" r="3" fill="#2EB872" />
+  <circle cx="28" cy="26" r="3" fill="#A8F2C7" />
+  <circle cx="33" cy="32" r="3" fill="#2EB872" />
+  <circle cx="40" cy="22" r="3" fill="#A8F2C7" />
 </svg>

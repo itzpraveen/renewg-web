@@ -23,9 +23,9 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
   <rect x="40" y="40" width="1120" height="550" rx="24" fill="rgba(255,255,255,0.08)"/>
   <image href="data:image/png;base64,${logoBase64}" x="60" y="70" height="90" preserveAspectRatio="xMinYMin meet"/>
   <g fill="#ffffff">
-    <text x="60" y="210" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="56" font-weight="700">Solar EPC • Hybrid Storage • EV Charging</text>
-    <text x="60" y="280" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="34" opacity="0.9">Commercial &amp; Industrial and Residential — Karnataka</text>
-    <text x="60" y="330" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" opacity="0.9">PM Surya Ghar deployments • Trading of solar &amp; lithium‑ion products</text>
+    <text x="60" y="210" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="60" font-weight="700">Redesigning nation's renewable energy</text>
+    <text x="60" y="280" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="34" opacity="0.9">Solar EPC • Hybrid Storage • EV Charging</text>
+    <text x="60" y="330" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" opacity="0.9">Karnataka • PM Surya Ghar • C&amp;I and Residential</text>
   </g>
   <g>
     <rect x="60" y="480" width="440" height="72" rx="12" fill="#ffffff"/>
@@ -44,4 +44,3 @@ main().catch((e) => {
   console.error(e);
   process.exit(1);
 });
-

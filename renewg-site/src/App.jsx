@@ -194,7 +194,7 @@ export default function App() {
           <div className="container hero-layout">
             <div className="hero-copy">
               <span className="hero-badge">Karnataka • Solar EPC • Energy Innovation</span>
-              <h1 id="hero-title">Powering Karnataka&apos;s transition to clean, resilient energy</h1>
+              <h1 id="hero-title">Redesigning nation's renewable energy</h1>
               <p>
                 RenewG delivers solar EPC in Karnataka — on‑grid, hybrid, and off‑grid systems — plus EV charging and lithium‑ion
                 storage. We support C&amp;I and residential clients, including PM Surya Ghar deployments, with compliant design and

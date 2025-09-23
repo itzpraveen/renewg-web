@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import logo from './assets/renewg-logo.png';
+import heroIllustration from './assets/hero-illustration.svg';
+import iconOnGrid from './assets/icon-on-grid.svg';
+import iconHybrid from './assets/icon-hybrid.svg';
+import iconOffGrid from './assets/icon-offgrid.svg';
+import iconEv from './assets/icon-ev.svg';
+import iconTrading from './assets/icon-trading.svg';
 import './App.css';
 
 const navLinks = [
@@ -35,6 +41,8 @@ const services = [
   {
     tag: 'On-Grid',
     title: 'On-Grid Solar Solutions',
+    icon: iconOnGrid,
+    iconAlt: 'Illustration of on-grid solar panels',
     copy:
       'Grid-interactive PV systems engineered for maximum net-metering benefits and bill optimization in C&I and residential environments.',
     bullets: [
@@ -46,6 +54,8 @@ const services = [
   {
     tag: 'Hybrid',
     title: 'Hybrid Solar Solutions',
+    icon: iconHybrid,
+    iconAlt: 'Illustration of hybrid solar with battery storage',
     copy:
       'PV with intelligent lithium-ion storage that balances peak load, strengthens resilience, and automates tariff optimization.',
     bullets: [
@@ -57,6 +67,8 @@ const services = [
   {
     tag: 'Off-Grid',
     title: 'Off-Grid Solar Solutions',
+    icon: iconOffGrid,
+    iconAlt: 'Illustration of stand-alone solar arrays',
     copy:
       'Independent solar infrastructure for remote sites, agri-operations, and critical facilities that demand total energy autonomy.',
     bullets: [
@@ -68,6 +80,8 @@ const services = [
   {
     tag: 'EV',
     title: 'EV Charging Stations',
+    icon: iconEv,
+    iconAlt: 'Illustration of electric vehicle being charged',
     copy:
       'Turnkey charging networks from load assessments to commissioning, software integration, and lifecycle service.',
     bullets: [
@@ -179,6 +193,7 @@ export default function App() {
               </div>
             </div>
             <aside className="hero-panel" aria-label="RenewG solution stack">
+              <img src={heroIllustration} alt="Illustration of solar panels, battery storage, and EV" className="hero-illustration" />
               <div className="panel-card">
                 <h2>Integrated clean energy stack</h2>
                 <ul>
@@ -248,8 +263,11 @@ export default function App() {
               {services.map((service) => (
                 <article key={service.title} className="service-card">
                   <div className="service-header">
-                    <span className="service-tag">{service.tag}</span>
-                    <h3>{service.title}</h3>
+                    <div className="service-heading">
+                      <span className="service-tag">{service.tag}</span>
+                      <h3>{service.title}</h3>
+                    </div>
+                    <img src={service.icon} alt={service.iconAlt} className="service-icon" />
                   </div>
                   <p>{service.copy}</p>
                   <ul>
@@ -309,6 +327,7 @@ export default function App() {
               </ul>
             </div>
             <div className="trading-card">
+              <img src={iconTrading} alt="Connected supply chain representing trading" className="trading-icon" />
               <h3>Procurement advantages</h3>
               <p>Technical sourcing specialists align the right technology mix with each deployment opportunity.</p>
               <div className="pill-group">

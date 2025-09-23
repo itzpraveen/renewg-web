@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://itzpraveen.github.io/renewg-web/sitemap.xml
+Sitemap: https://renewg.in/sitemap.xml

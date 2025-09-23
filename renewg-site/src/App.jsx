@@ -165,9 +165,9 @@ export default function App() {
       <header className="site-header">
         <div className="container nav-container">
           <a className="logo" href="#top" aria-label="RenewG home">
-            <img src={logo} alt="RenewG logo" />
+            <img src={logo} alt="RenewG logo" width="150" />
           </a>
-          <nav className={navOpen ? 'site-nav open' : 'site-nav'} id="site-nav">
+          <nav className={navOpen ? 'site-nav open' : 'site-nav'} id="site-nav" aria-label="Primary">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={closeNav}>
                 {link.label}
@@ -196,11 +196,12 @@ export default function App() {
               <span className="hero-badge">Karnataka • Solar EPC • Energy Innovation</span>
               <h1 id="hero-title">Powering Karnataka&apos;s transition to clean, resilient energy</h1>
               <p>
-                RenewG delivers turnkey solar EPC, hybrid storage, and EV charging ecosystems for commercial, industrial, and domestic
-                customers. We engineer every site for reliability, regulatory compliance, and measurable ROI.
+                RenewG delivers solar EPC in Karnataka — on‑grid, hybrid, and off‑grid systems — plus EV charging and lithium‑ion
+                storage. We support C&amp;I and residential clients, including PM Surya Ghar deployments, with compliant design and
+                measurable ROI.
               </p>
               <div className="hero-actions">
-                <a className="btn whatsapp" href={whatsappHref} target="_blank" rel="noreferrer">
+                <a className="btn whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
                   <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
                   WhatsApp Consultation
                 </a>
@@ -216,7 +217,7 @@ export default function App() {
               </div>
             </div>
             <aside className="hero-panel" aria-label="RenewG solution stack">
-              <img src={heroIllustration} alt="Illustration of solar panels, battery storage, and EV" className="hero-illustration" />
+              <img src={heroIllustration} alt="Illustration of solar panels, battery storage, and EV" className="hero-illustration" loading="lazy" />
               <div className="panel-card">
                 <h2>Integrated clean energy stack</h2>
                 <ul>
@@ -278,8 +279,8 @@ export default function App() {
               <span className="eyebrow">Services</span>
               <h2>End-to-end delivery across every solar scenario</h2>
               <p>
-                Precision engineering, certified components, and data-driven operations ensure each system delivers dependable savings
-                and uptime.
+                Precision engineering for on‑grid, hybrid, and off‑grid solar in Karnataka — from feasibility and EPC through O&amp;M.
+                We also deliver EV charging for C&amp;I sites and smart homes.
               </p>
             </div>
             <div className="service-grid">
@@ -290,7 +291,7 @@ export default function App() {
                       <span className="service-tag">{service.tag}</span>
                       <h3>{service.title}</h3>
                     </div>
-                    <img src={service.icon} alt={service.iconAlt} className="service-icon" />
+                    <img src={service.icon} alt={service.iconAlt} className="service-icon" width="60" height="60" loading="lazy" />
                   </div>
                   <p>{service.copy}</p>
                   <ul>
@@ -331,14 +332,14 @@ export default function App() {
         </section>
 
         <section className="trading" id="trading">
-          <div className="container trading-grid">
-            <div className="trading-copy">
-              <span className="eyebrow">Product Trading</span>
-              <h2>Solar &amp; lithium-ion products supplied with confidence</h2>
-              <p>
-                RenewG sources a curated inventory of solar modules, inverters, lithium-ion battery packs, balance-of-system hardware,
-                and EV charging equipment for EPC firms, installers, and end customers.
-              </p>
+            <div className="container trading-grid">
+              <div className="trading-copy">
+                <span className="eyebrow">Product Trading</span>
+                <h2>Solar &amp; lithium‑ion product trading in Karnataka</h2>
+                <p>
+                  RenewG sources a curated inventory of solar modules, inverters, lithium-ion battery packs, balance-of-system hardware,
+                  and EV charging equipment for EPC firms, installers, and end customers.
+                </p>
               <p>
                 We leverage OEM-certified partnerships, rigorous quality audits, and responsive after-sales support to keep projects on
                 schedule and on budget.
@@ -350,7 +351,7 @@ export default function App() {
               </ul>
             </div>
             <div className="trading-card">
-              <img src={iconTrading} alt="Connected supply chain representing trading" className="trading-icon" />
+              <img src={iconTrading} alt="Connected supply chain representing trading" className="trading-icon" width="72" height="72" loading="lazy" />
               <h3>Procurement advantages</h3>
               <p>Technical sourcing specialists align the right technology mix with each deployment opportunity.</p>
               <div className="pill-group">
@@ -371,7 +372,7 @@ export default function App() {
             </p>
             <div className="cta-actions">
               <a className="btn primary" href="mailto:hello@renewg.in">Schedule a consultation</a>
-              <a className="btn whatsapp light" href={whatsappHref} target="_blank" rel="noreferrer">
+              <a className="btn whatsapp light" href={whatsappHref} target="_blank" rel="noopener noreferrer">
                 <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
                 Chat on WhatsApp
               </a>
@@ -380,7 +381,7 @@ export default function App() {
         </section>
       </main>
 
-      <a className="whatsapp-float" href={whatsappHref} target="_blank" rel="noreferrer">
+      <a className="whatsapp-float" href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat">
         <img src={iconWhatsapp} alt="" aria-hidden="true" />
         <span className="sr-only">Chat with RenewG on WhatsApp</span>
       </a>
@@ -389,7 +390,7 @@ export default function App() {
         <div className="container footer-grid">
           <div className="footer-brand">
             <a className="logo footer-logo" href="#top" aria-label="RenewG home">
-              <img src={logo} alt="RenewG logo" />
+              <img src={logo} alt="RenewG logo" width="160" loading="lazy" />
             </a>
             <p>Solar EPC specialists empowering Karnataka with intelligent, connected energy ecosystems.</p>
           </div>

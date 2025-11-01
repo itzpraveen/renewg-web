@@ -14,6 +14,7 @@ const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
   { label: 'Product Trading', href: '#trading' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -149,6 +150,38 @@ const phoneContacts = [
   },
 ];
 
+const faqItems = [
+  {
+    question: 'What solar EPC services does RenewG provide in Karnataka?',
+    answer: (
+      <>
+        RenewG delivers <a href="#services">on-grid, hybrid, and off-grid solar EPC engagements</a> across Karnataka, covering
+        feasibility studies, engineering, procurement, construction, and proactive O&amp;M for commercial, industrial, and
+        residential clients.
+      </>
+    ),
+  },
+  {
+    question: 'Does RenewG support government programs such as PM Surya Ghar?',
+    answer: (
+      <>
+        Yes. Our team guides households and housing communities through <a href="#projects">PM Surya Ghar aligned deployments</a>,
+        including subsidy documentation, compliant design submissions, and commissioning that unlocks incentives rapidly.
+      </>
+    ),
+  },
+  {
+    question: 'How can I start a consultation with RenewG?',
+    answer: (
+      <>
+        Email <a href="mailto:hello@renewg.in">hello@renewg.in</a>, call or WhatsApp{' '}
+        <a href={`tel:+${whatsappNumber}`}>+91 80502 45123</a>, or submit the form in our <a href="#contact">contact section</a> to
+        schedule a tailored solar or storage consultation.
+      </>
+    ),
+  },
+];
+
 export default function App() {
   const [navOpen, setNavOpen] = useState(false);
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -161,7 +194,7 @@ export default function App() {
   const closeNav = () => setNavOpen(false);
 
   return (
-    <div className={navOpen ? 'app is-nav-open' : 'app'}>
+    <div id="top" className={navOpen ? 'app is-nav-open' : 'app'}>
       <header className="site-header">
         <div className="container nav-container">
           <a className="logo" href="#top" aria-label="RenewG home">
@@ -196,9 +229,9 @@ export default function App() {
               <span className="hero-badge">Karnataka • Solar EPC • Energy Innovation</span>
               <h1 id="hero-title">Redesigning nation's renewable energy</h1>
               <p>
-                RenewG delivers solar EPC in Karnataka — on‑grid, hybrid, and off‑grid systems — plus EV charging and lithium‑ion
-                storage. We support C&amp;I and residential clients, including PM Surya Ghar deployments, with compliant design and
-                measurable ROI.
+                RenewG delivers <a href="#services">solar EPC in Karnataka</a>—on-grid, hybrid, and off-grid systems—plus{' '}
+                <a href="#services">EV charging</a> and lithium-ion storage. We support C&amp;I and residential clients, including{' '}
+                <a href="#projects">PM Surya Ghar deployments</a>, with compliant design and measurable ROI.
               </p>
               <div className="hero-actions">
                 <a className="btn whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
@@ -332,17 +365,18 @@ export default function App() {
         </section>
 
         <section className="trading" id="trading">
-            <div className="container trading-grid">
-              <div className="trading-copy">
-                <span className="eyebrow">Product Trading</span>
-                <h2>Solar &amp; lithium‑ion product trading in Karnataka</h2>
-                <p>
-                  RenewG sources a curated inventory of solar modules, inverters, lithium-ion battery packs, balance-of-system hardware,
-                  and EV charging equipment for EPC firms, installers, and end customers.
-                </p>
+          <div className="container trading-grid">
+            <div className="trading-copy">
+              <span className="eyebrow">Product Trading</span>
+              <h2>Solar &amp; lithium-ion product trading in Karnataka</h2>
+              <p>
+                RenewG sources a curated inventory of solar modules, inverters, lithium-ion battery packs, balance-of-system hardware,
+                and EV charging equipment for EPC firms, installers, and end customers.
+              </p>
               <p>
                 We leverage OEM-certified partnerships, rigorous quality audits, and responsive after-sales support to keep projects on
-                schedule and on budget.
+                schedule and on budget, with specialists ready to{' '}
+                <a href="#contact">coordinate procurement support</a>.
               </p>
               <ul className="trading-list">
                 {tradingBullets.map((bullet) => (
@@ -359,6 +393,27 @@ export default function App() {
                 <span className="pill">Rapid fulfilment</span>
                 <span className="pill">Warranty-backed support</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="faq" id="faq" aria-labelledby="faq-title">
+          <div className="container faq-grid">
+            <div className="section-intro">
+              <span className="eyebrow">FAQ</span>
+              <h2 id="faq-title">Frequently asked questions</h2>
+              <p>
+                Explore quick answers about <a href="#services">solar EPC delivery</a>, program support, and how to{' '}
+                <a href="#contact">engage our team</a>.
+              </p>
+            </div>
+            <div className="faq-items">
+              {faqItems.map((item) => (
+                <article key={item.question} className="faq-item">
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>

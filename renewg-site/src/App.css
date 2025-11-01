@@ -615,6 +615,51 @@ section {
   letter-spacing: 0.03em;
 }
 
+.faq {
+  background: var(--surface);
+}
+
+.faq-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+}
+
+.faq-items {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.faq-item {
+  background: var(--surface-alt);
+  border: 1px solid rgba(46, 184, 114, 0.16);
+  border-radius: 20px;
+  padding: clamp(1.6rem, 3vw, 2rem);
+  box-shadow: 0 18px 36px rgba(46, 184, 114, 0.12);
+}
+
+.faq-item h3 {
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-dark);
+}
+
+.faq-item p {
+  margin: 0;
+  color: rgba(42, 70, 58, 0.72);
+}
+
+.faq-item a {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.faq-item a:hover {
+  color: #0f5d33;
+}
+
 .cta {
   text-align: center;
   color: #ffffff;
@@ -733,7 +778,8 @@ section {
 @media (max-width: 1024px) {
   .hero-layout,
   .about-grid,
-  .trading-grid {
+  .trading-grid,
+  .faq-grid {
     grid-template-columns: 1fr;
   }
 
@@ -796,6 +842,10 @@ section {
 @media (max-width: 640px) {
   .hero-metrics {
     grid-template-columns: 1fr;
+  }
+
+  .faq-item {
+    padding: 1.6rem;
   }
 
   .service-header {

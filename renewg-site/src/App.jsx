@@ -41,8 +41,8 @@ const proofPoints = [
     copy: 'We handle portal registration, documentation, KSEB liaison, net-meter commissioning, and subsidy paperwork — so you never have to chase it yourself.',
   },
   {
-    label: 'Kerala & Karnataka coverage',
-    copy: 'RenewG Solar LLP delivers across Karnataka, and into Kerala through our partner Tenaga Energy Solutions.',
+    label: 'Karnataka-based delivery',
+    copy: 'RenewG Solar LLP delivers across Karnataka, with project support extending into Kerala through our partner Tenaga Energy Solutions.',
   },
   {
     label: 'One team, start to finish',
@@ -217,7 +217,7 @@ const faqItems = [
   {
     question: 'What kind of solar projects do you take on?',
     answer:
-      'We handle residential, commercial, industrial, and institutional solar — on-grid, hybrid, and off-grid — plus battery storage, EV charging, and equipment supply across Kerala and Karnataka.',
+      'We handle residential, commercial, industrial, and institutional solar — on-grid, hybrid, and off-grid — plus battery storage, EV charging, and equipment supply across Karnataka, with project support into Kerala.',
   },
   {
     question: 'Can you help with PM Surya Ghar and net-metering?',
@@ -403,7 +403,7 @@ export default function App() {
           <div className="container hero-inner">
             <div className="hero-copy">
               <p className="hero-kicker">Solar · Storage · EV charging</p>
-              <h1 id="hero-title">Solar EPC for Kerala &amp; Karnataka.</h1>
+              <h1 id="hero-title">Solar EPC for Karnataka.</h1>
               <p>
                 MNRE-aligned rooftop solar, lithium storage, EV charging, and long-term maintenance — for homes,
                 businesses, and institutions ready to cut energy costs.
@@ -447,7 +447,7 @@ export default function App() {
               <p className="eyebrow">Track record</p>
               <h2>Trusted since 2017 — homes, businesses, and government projects.</h2>
               <p>
-                Over 3 MW commissioned across Kerala and Karnataka — from subsidised home rooftops to large
+                Over 3 MW commissioned across Karnataka, with delivery into Kerala — from subsidised home rooftops to large
                 commercial plants and ANERT-backed government work.
               </p>
             </div>

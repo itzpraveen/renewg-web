@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import logo from './assets/renewg-logo.png';
-import heroIllustration from './assets/hero-illustration.svg';
+import heroImage from './assets/solar-rooftop-hero.webp';
+import hybridImage from './assets/hybrid-ev-storage.webp';
+import residentialImage from './assets/residential-consultation.webp';
+import battery12v100ah from './assets/product-arenq-12v-100ah.webp';
+import battery25v100ah from './assets/product-arenq-25v-100ah.webp';
+import battery25v200ah from './assets/product-arenq-25v-200ah.webp';
+import battery48v100ah from './assets/product-arenq-48v-100ah.webp';
+import battery121v100ah from './assets/product-arenq-121v-100ah-stack.webp';
 import iconOnGrid from './assets/icon-on-grid.svg';
 import iconHybrid from './assets/icon-hybrid.svg';
 import iconOffGrid from './assets/icon-offgrid.svg';
@@ -9,131 +16,185 @@ import iconTrading from './assets/icon-trading.svg';
 import iconWhatsapp from './assets/icon-whatsapp.svg';
 import './App.css';
 
+const whatsappNumber = '918050245123';
+const secondaryNumber = '918050863123';
+const createWhatsappHref = (message) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+const whatsappHref = createWhatsappHref('Hi RenewG, I want to plan a solar project.');
+
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Product Trading', href: '#trading' },
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'Process', href: '#process' },
+  { label: 'Homes', href: '#homes' },
+  { label: 'Batteries', href: '#batteries' },
+  { label: 'Trading', href: '#trading' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
-const metrics = [
-  {
-    label: 'Cumulative Solar Capacity',
-    value: '50+ MW',
-  },
-  {
-    label: 'Lifecycle Support',
-    value: '24/7 monitoring',
-  },
-  {
-    label: 'Projects Delivered',
-    value: 'Custom EPC for every site',
-  },
+const heroMetrics = [
+  { label: 'Solar capacity delivered', value: '50+ MW' },
+  { label: 'Core region', value: 'Karnataka' },
+  { label: 'Support model', value: 'EPC + O&M' },
 ];
 
-const trustBarItems = [
-  'Commercial & Industrial',
-  'PM Surya Ghar Programs',
-  'Energy Trading Partnerships',
+const proofPoints = [
+  {
+    label: 'Commercial rooftops',
+    copy: 'High-yield PV designs for factories, campuses, hospitals, and institutions.',
+  },
+  {
+    label: 'Resilient power',
+    copy: 'Hybrid solar, lithium-ion storage, and backup controls sized to real load profiles.',
+  },
+  {
+    label: 'Residential savings',
+    copy: 'Rooftop solar guidance with net-metering and PM Surya Ghar documentation support.',
+  },
 ];
 
 const services = [
   {
-    tag: 'On-Grid',
-    title: 'On-Grid Solar Solutions',
+    title: 'On-grid solar EPC',
+    tag: 'Bill reduction',
     icon: iconOnGrid,
-    iconAlt: 'Illustration of on-grid solar panels',
+    alt: 'On-grid solar icon',
     copy:
-      'Grid-interactive PV systems engineered for maximum net-metering benefits and bill optimization in C&I and residential environments.',
-    bullets: [
-      'Detailed load studies and ROI modelling',
-      'Tier-1 modules, inverters, and BOS hardware',
-      'SCADA-enabled monitoring and proactive O&M',
-    ],
+      'Grid-synchronised rooftop and ground-mount systems engineered for predictable yield, compliance, and net-metering value.',
+    bullets: ['Site survey and shade analysis', 'Structural and electrical design', 'Commissioning and monitoring'],
   },
   {
-    tag: 'Hybrid',
-    title: 'Hybrid Solar Solutions',
+    title: 'Hybrid solar and storage',
+    tag: 'Reliability',
     icon: iconHybrid,
-    iconAlt: 'Illustration of hybrid solar with battery storage',
+    alt: 'Hybrid solar icon',
     copy:
-      'PV with intelligent lithium-ion storage that balances peak load, strengthens resilience, and automates tariff optimization.',
-    bullets: [
-      'Smart energy management with dynamic dispatch',
-      'Scalable storage capacities and modular design',
-      'Load prioritisation and backup automation',
-    ],
+      'Solar PV paired with lithium-ion storage and smart dispatch for peak-load shaving, backup, and energy continuity.',
+    bullets: ['Battery sizing', 'Load prioritisation', 'Automated energy controls'],
   },
   {
-    tag: 'Off-Grid',
-    title: 'Off-Grid Solar Solutions',
+    title: 'Off-grid power systems',
+    tag: 'Remote energy',
     icon: iconOffGrid,
-    iconAlt: 'Illustration of stand-alone solar arrays',
+    alt: 'Off-grid solar icon',
     copy:
-      'Independent solar infrastructure for remote sites, agri-operations, and critical facilities that demand total energy autonomy.',
-    bullets: [
-      'Custom system sizing with ruggedised components',
-      'Integrated storage and intelligent controls',
-      'Field training and long-haul maintenance support',
-    ],
+      'Independent solar infrastructure for farms, remote operations, and critical facilities that cannot depend on weak grid supply.',
+    bullets: ['Rugged components', 'Autonomous controls', 'Field service planning'],
   },
   {
-    tag: 'EV',
-    title: 'EV Charging Stations',
+    title: 'EV charging stations',
+    tag: 'Solar mobility',
     icon: iconEv,
-    iconAlt: 'Illustration of electric vehicle being charged',
+    alt: 'EV charging icon',
     copy:
-      'Turnkey charging networks from load assessments to commissioning, software integration, and lifecycle service.',
-    bullets: [
-      'AC and DC fast-charging infrastructure',
-      'User access, billing, and energy analytics',
-      'Solar-to-wheel integrations with storage',
-    ],
+      'AC and DC charging infrastructure integrated with solar generation, storage, access control, billing, and analytics.',
+    bullets: ['Charger selection', 'Load approvals', 'Solar-to-wheel architecture'],
   },
 ];
 
-const projectSegments = [
+const processSteps = [
   {
-    title: 'Commercial & Industrial',
+    number: '01',
+    title: 'Audit the site',
     copy:
-      'Large-format rooftop and ground-mounted arrays with structural retrofits, grid synchronisation, and performance-linked maintenance.',
-    bullets: [
-      'Detailed load profiling and power quality studies',
-      'Safety-first construction with zero-lost time metrics',
-      'Energy dashboards and SLA-backed O&M',
-    ],
+      'RenewG studies roof strength, shade, sanctioned load, diesel backup, bill history, and future demand before recommending capacity.',
   },
   {
-    title: 'Domestic & Residential',
+    number: '02',
+    title: 'Engineer the business case',
     copy:
-      'Scalable rooftop PV for smart homes, gated communities, and PM Surya Ghar beneficiaries with subsidy documentation support.',
-    bullets: [
-      'Hybrid inverters, smart meters, and app insights',
-      'Designs that complement rooftops and skylines',
-      'Neighbourhood-scale energy communities',
-    ],
+      'The team builds a practical design with generation estimates, ROI logic, subsidy or net-metering path, and equipment choices.',
+  },
+  {
+    number: '03',
+    title: 'Build with control',
+    copy:
+      'Procurement, installation, approvals, safety checks, and commissioning are managed through a single accountable EPC workflow.',
+  },
+  {
+    number: '04',
+    title: 'Operate for yield',
+    copy:
+      'Monitoring, preventive maintenance, service visits, and performance reviews keep the asset producing after handover.',
   },
 ];
 
-const tradingBullets = [
-  'Tier-1 solar panels, microinverters, and optimisers',
-  'Lithium-ion battery packs with advanced BMS control',
-  'Mounting structures, cabling, and protection systems',
-  'AC/DC chargers and load management software',
+const tradingItems = [
+  'Tier-1 solar modules, inverters, optimisers, and microinverters',
+  'Lithium-ion battery packs with BMS, cabinets, and protection gear',
+  'Mounting structures, DC cabling, AC panels, meters, and BOS hardware',
+  'AC/DC EV chargers with load management and service support',
 ];
 
-const heroStack = [
-  'On-grid, off-grid, and hybrid solar PV',
-  'Lithium-ion storage architectures',
-  'Smart EV charging infrastructure',
-  'Digital monitoring & O&M services',
+const batteryProducts = [
+  {
+    name: 'ARENQ LiFePO4 12.8V 100Ah Smart Battery',
+    searchLabel: '12V inverter battery',
+    image: battery12v100ah,
+    alt: 'ARENQ LiFePO4 12.8V 100Ah smart lithium inverter battery',
+    summary: 'A compact lithium replacement for normal C10-150Ah tubular battery backup systems.',
+    specs: ['100Ah / 12.8V', '5-year warranty', 'Smart BMS', 'Sine-wave inverter compatible'],
+  },
+  {
+    name: 'ARENQ LiFePO4 25.6V 100Ah Smart Battery',
+    searchLabel: '24V lithium inverter battery',
+    image: battery25v100ah,
+    alt: 'ARENQ LiFePO4 25.6V 100Ah smart lithium inverter battery',
+    summary: 'Equivalent to two normal C10-150Ah tubular batteries for 24V inverter backup use.',
+    specs: ['100Ah / 25.6V', 'Tubular replacement', 'Smart LiFePO4 pack', 'Solar inverter backup'],
+  },
+  {
+    name: 'ARENQ LiFePO4 25.6V 200Ah Smart Battery',
+    searchLabel: 'high backup 24V battery',
+    image: battery25v200ah,
+    alt: 'ARENQ LiFePO4 25.6V 200Ah smart lithium inverter battery',
+    summary: 'Higher-capacity 24V lithium battery for homes and businesses that need longer backup.',
+    specs: ['200Ah / 25.6V', 'Smart BMS', 'High backup capacity', 'Home and office backup'],
+  },
+  {
+    name: 'ARENQ LiFePO4 48V 100Ah Smart Battery',
+    searchLabel: '48V solar inverter battery',
+    image: battery48v100ah,
+    alt: 'ARENQ LiFePO4 48V 100Ah smart lithium solar inverter battery',
+    summary: 'A 48V lithium battery option for solar hybrid inverters and larger backup systems.',
+    specs: ['100Ah / 48V', 'Smart lithium battery', 'Solar inverter use', 'Clean compact cabinet'],
+  },
+  {
+    name: 'ARENQ 121V 100Ah Lithium Battery Stack',
+    searchLabel: 'high voltage lithium battery',
+    image: battery121v100ah,
+    alt: 'ARENQ 121V 100Ah modular lithium battery stack for inverter backup',
+    summary: 'Modular high-voltage lithium battery stack for larger inverter and solar backup needs.',
+    specs: ['121V / 100Ah', 'Modular stack', 'Integrated controls', 'Compatibility check required'],
+  },
 ];
 
-const whatsappNumber = '918050245123';
-const secondaryNumber = '918050863123';
-const whatsappHref = `https://wa.me/${whatsappNumber}`;
+const faqItems = [
+  {
+    question: 'What kind of solar projects can RenewG handle?',
+    answer:
+      'RenewG handles commercial, industrial, institutional, residential, hybrid, off-grid, battery storage, EV charging, and solar product procurement projects across Karnataka.',
+  },
+  {
+    question: 'Can RenewG help with PM Surya Ghar and net-metering?',
+    answer:
+      'Yes. The team supports residential customers with compliant rooftop design, documentation guidance, net-metering coordination, and subsidy-aligned project planning.',
+  },
+  {
+    question: 'How should a business start the evaluation?',
+    answer:
+      'Share your electricity bill, site location, approximate roof or land area, and backup requirement. RenewG can then assess solar capacity, savings potential, and the right implementation path.',
+  },
+  {
+    question: 'Does RenewG also supply solar products?',
+    answer:
+      'Yes. RenewG sources panels, inverters, ARENQ lithium inverter batteries, mounting structures, EV charging hardware, and supporting electrical components for installers, EPC firms, and end customers.',
+  },
+  {
+    question: 'Can I buy lithium inverter batteries from RenewG?',
+    answer:
+      'Yes. RenewG supplies ARENQ LiFePO4 lithium batteries for 12V, 24V, 48V, and high-voltage inverter backup needs. Customers can ask for price, stock, delivery, and inverter compatibility on WhatsApp before buying.',
+  },
+];
 
 const phoneContacts = [
   {
@@ -150,38 +211,6 @@ const phoneContacts = [
   },
 ];
 
-const faqItems = [
-  {
-    question: 'What solar EPC services does RenewG provide in Karnataka?',
-    answer: (
-      <>
-        RenewG delivers <a href="#services">on-grid, hybrid, and off-grid solar EPC engagements</a> across Karnataka, covering
-        feasibility studies, engineering, procurement, construction, and proactive O&amp;M for commercial, industrial, and
-        residential clients.
-      </>
-    ),
-  },
-  {
-    question: 'Does RenewG support government programs such as PM Surya Ghar?',
-    answer: (
-      <>
-        Yes. Our team guides households and housing communities through <a href="#projects">PM Surya Ghar aligned deployments</a>,
-        including subsidy documentation, compliant design submissions, and commissioning that unlocks incentives rapidly.
-      </>
-    ),
-  },
-  {
-    question: 'How can I start a consultation with RenewG?',
-    answer: (
-      <>
-        Email <a href="mailto:hello@renewg.in">hello@renewg.in</a>, call or WhatsApp{' '}
-        <a href={`tel:+${whatsappNumber}`}>+91 80502 45123</a>, or submit the form in our <a href="#contact">contact section</a> to
-        schedule a tailored solar or storage consultation.
-      </>
-    ),
-  },
-];
-
 export default function App() {
   const [navOpen, setNavOpen] = useState(false);
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -191,27 +220,58 @@ export default function App() {
     return () => document.body.classList.remove('nav-open');
   }, [navOpen]);
 
+  useEffect(() => {
+    const targets = document.querySelectorAll('[data-reveal]');
+
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach((target) => target.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -48px' },
+    );
+
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
   const closeNav = () => setNavOpen(false);
 
   return (
     <div id="top" className={navOpen ? 'app is-nav-open' : 'app'}>
       <header className="site-header">
         <div className="container nav-container">
-          <a className="logo" href="#top" aria-label="RenewG home">
+          <a className="logo" href="#top" aria-label="RenewG home" onClick={closeNav}>
             <img src={logo} alt="RenewG logo" width="150" />
           </a>
-          <nav className={navOpen ? 'site-nav open' : 'site-nav'} id="site-nav" aria-label="Primary">
+
+          <nav className={navOpen ? 'site-nav open' : 'site-nav'} id="site-nav" aria-label="Primary navigation">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={closeNav}>
                 {link.label}
               </a>
             ))}
           </nav>
+
+          <a className="header-action" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+
           <button
             type="button"
             className="nav-toggle"
             aria-label="Toggle navigation"
             aria-expanded={navOpen}
+            aria-controls="site-nav"
             onClick={() => setNavOpen((open) => !open)}
           >
             <span />
@@ -223,113 +283,73 @@ export default function App() {
 
       <main>
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-decoration" aria-hidden="true" />
-          <div className="container hero-layout">
-            <div className="hero-copy">
-              <span className="hero-badge">Karnataka • Solar EPC • Energy Innovation</span>
-              <h1 id="hero-title">Redesigning nation's renewable energy</h1>
+          <img className="hero-image" src={heroImage} alt="Commercial rooftop solar installation in Karnataka" />
+          <div className="hero-shade" aria-hidden="true" />
+
+          <div className="container hero-inner">
+            <div className="hero-copy" data-reveal>
+              <p className="hero-kicker">RenewG</p>
+              <h1 id="hero-title">Solar EPC for Karnataka rooftops.</h1>
               <p>
-                RenewG delivers <a href="#services">solar EPC in Karnataka</a>—on-grid, hybrid, and off-grid systems—plus{' '}
-                <a href="#services">EV charging</a> and lithium-ion storage. We support C&amp;I and residential clients, including{' '}
-                <a href="#projects">PM Surya Ghar deployments</a>, with compliant design and measurable ROI.
+                Design, procurement, installation, storage, EV charging, and lifecycle O&M for businesses,
+                institutions, communities, and homes ready to lower energy costs.
               </p>
               <div className="hero-actions">
-                <a className="btn whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                <a className="btn btn-primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
                   <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
-                  WhatsApp Consultation
+                  Plan my project
                 </a>
-                <a className="btn primary" href="#contact">Talk to Our Experts</a>
-              </div>
-              <div className="hero-metrics">
-                {metrics.map((metric) => (
-                  <div key={metric.label} className="metric-card">
-                    <span className="metric-label">{metric.label}</span>
-                    <span className="metric-value">{metric.value}</span>
-                  </div>
-                ))}
+                <a className="btn btn-secondary" href="#solutions">
+                  Explore solutions
+                </a>
               </div>
             </div>
-            <aside className="hero-panel" aria-label="RenewG solution stack">
-              <img src={heroIllustration} alt="Illustration of solar panels, battery storage, and EV" className="hero-illustration" loading="lazy" />
-              <div className="panel-card">
-                <h2>Integrated clean energy stack</h2>
-                <ul>
-                  {heroStack.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <div className="panel-badges">
-                  <span>Design</span>
-                  <span>Build</span>
-                  <span>Operate</span>
+
+            <dl className="hero-metrics" data-reveal>
+              {heroMetrics.map((metric) => (
+                <div key={metric.label}>
+                  <dt>{metric.label}</dt>
+                  <dd>{metric.value}</dd>
                 </div>
-              </div>
-            </aside>
+              ))}
+            </dl>
           </div>
-          <div className="container trust-bar" aria-label="RenewG focus areas">
-            {trustBarItems.map((item) => (
-              <div key={item}>{item}</div>
+        </section>
+
+        <section className="proof-strip" aria-label="RenewG project focus">
+          <div className="container proof-grid">
+            {proofPoints.map((point) => (
+              <article key={point.label} data-reveal>
+                <h2>{point.label}</h2>
+                <p>{point.copy}</p>
+              </article>
             ))}
           </div>
         </section>
 
-        <section className="about" id="about">
-          <div className="container about-grid">
-            <div className="section-intro">
-              <span className="eyebrow">About RenewG</span>
-              <h2>Solar EPC specialists rooted in Karnataka</h2>
-              <p>
-                With deep engineering, procurement, and construction expertise, RenewG transforms rooftops and landscapes into
-                high-performing solar assets. We align every deployment with sustainability goals, government programs, and long-term
-                operational performance.
-              </p>
-              <ul className="about-list">
-                <li>Dedicated teams for C&amp;I, institutional, and residential solar.</li>
-                <li>Comprehensive project management from feasibility through commissioning.</li>
-                <li>Lifecycle asset care including remote diagnostics and field service.</li>
-              </ul>
-            </div>
-            <div className="about-cards">
-              <article className="about-card">
-                <h3>Commercial &amp; Industrial</h3>
-                <p>High-yield deployments engineered for peak productivity and uncompromised safety compliance.</p>
-              </article>
-              <article className="about-card">
-                <h3>Domestic &amp; PM Surya Ghar</h3>
-                <p>Smart home solar with subsidy advisory, net-metering support, and intuitive performance insights.</p>
-              </article>
-              <article className="about-card">
-                <h3>Energy Innovation</h3>
-                <p>Hybrid storage, EV charging, and digital platforms that enable resilient, future-ready ecosystems.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="services" id="services">
+        <section className="section solutions" id="solutions">
           <div className="container">
-            <div className="section-intro centered">
-              <span className="eyebrow">Services</span>
-              <h2>End-to-end delivery across every solar scenario</h2>
+            <div className="section-heading" data-reveal>
+              <p className="eyebrow">Solutions</p>
+              <h2>One accountable team from energy study to operating asset.</h2>
               <p>
-                Precision engineering for on‑grid, hybrid, and off‑grid solar in Karnataka — from feasibility and EPC through O&amp;M.
-                We also deliver EV charging for C&amp;I sites and smart homes.
+                RenewG helps customers choose the right mix of solar generation, storage, EV charging, and
+                procurement support without forcing every site into the same package.
               </p>
             </div>
-            <div className="service-grid">
+
+            <div className="solution-grid">
               {services.map((service) => (
-                <article key={service.title} className="service-card">
-                  <div className="service-header">
-                    <div className="service-heading">
-                      <span className="service-tag">{service.tag}</span>
-                      <h3>{service.title}</h3>
-                    </div>
-                    <img src={service.icon} alt={service.iconAlt} className="service-icon" width="60" height="60" loading="lazy" />
+                <article className="solution-card" key={service.title} data-reveal>
+                  <div className="solution-icon">
+                    <img src={service.icon} alt={service.alt} width="52" height="52" loading="lazy" />
                   </div>
+                  <p className="solution-tag">{service.tag}</p>
+                  <h3>{service.title}</h3>
                   <p>{service.copy}</p>
                   <ul>
                     {service.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}.</li>
+                      <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
                 </article>
@@ -338,98 +358,171 @@ export default function App() {
           </div>
         </section>
 
-        <section className="projects" id="projects">
-          <div className="container projects-grid">
-            <div className="section-intro">
-              <span className="eyebrow">Projects</span>
-              <h2>Deployments delivering measurable impact</h2>
-              <p>
-                Our portfolio spans industrial rooftops, educational campuses, housing communities, and agricultural estates—each
-                tailored for compliance and performance.
-              </p>
-            </div>
-            <div className="project-cards">
-              {projectSegments.map((segment) => (
-                <article key={segment.title} className="project-card">
-                  <h3>{segment.title}</h3>
-                  <p>{segment.copy}</p>
-                  <ul>
-                    {segment.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}.</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <section className="section energy-stack" id="process">
+          <div className="container stack-grid">
+            <figure className="stack-media" data-reveal>
+              <img src={hybridImage} alt="Solar canopy with battery storage and EV charging" loading="lazy" />
+              <figcaption>Solar generation, storage, and EV charging designed as one energy system.</figcaption>
+            </figure>
 
-        <section className="trading" id="trading">
-          <div className="container trading-grid">
-            <div className="trading-copy">
-              <span className="eyebrow">Product Trading</span>
-              <h2>Solar &amp; lithium-ion product trading in Karnataka</h2>
-              <p>
-                RenewG sources a curated inventory of solar modules, inverters, lithium-ion battery packs, balance-of-system hardware,
-                and EV charging equipment for EPC firms, installers, and end customers.
-              </p>
-              <p>
-                We leverage OEM-certified partnerships, rigorous quality audits, and responsive after-sales support to keep projects on
-                schedule and on budget, with specialists ready to{' '}
-                <a href="#contact">coordinate procurement support</a>.
-              </p>
-              <ul className="trading-list">
-                {tradingBullets.map((bullet) => (
-                  <li key={bullet}>{bullet}.</li>
+            <div className="stack-copy">
+              <div className="section-heading compact" data-reveal>
+                <p className="eyebrow">Process</p>
+                <h2>Built like infrastructure, not a one-time installation.</h2>
+                <p>
+                  The right solar project starts with the electrical reality of the site. RenewG keeps the
+                  journey clear from the first audit to performance monitoring.
+                </p>
+              </div>
+
+              <div className="process-list">
+                {processSteps.map((step) => (
+                  <article key={step.number} data-reveal>
+                    <span>{step.number}</span>
+                    <div>
+                      <h3>{step.title}</h3>
+                      <p>{step.copy}</p>
+                    </div>
+                  </article>
                 ))}
-              </ul>
-            </div>
-            <div className="trading-card">
-              <img src={iconTrading} alt="Connected supply chain representing trading" className="trading-icon" width="72" height="72" loading="lazy" />
-              <h3>Procurement advantages</h3>
-              <p>Technical sourcing specialists align the right technology mix with each deployment opportunity.</p>
-              <div className="pill-group">
-                <span className="pill">OEM-authenticated inventory</span>
-                <span className="pill">Rapid fulfilment</span>
-                <span className="pill">Warranty-backed support</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="faq" id="faq" aria-labelledby="faq-title">
-          <div className="container faq-grid">
-            <div className="section-intro">
-              <span className="eyebrow">FAQ</span>
-              <h2 id="faq-title">Frequently asked questions</h2>
+        <section className="section homes" id="homes">
+          <div className="container homes-grid">
+            <div className="homes-copy" data-reveal>
+              <p className="eyebrow">Homes and communities</p>
+              <h2>Residential solar that feels understandable before installation day.</h2>
               <p>
-                Explore quick answers about <a href="#services">solar EPC delivery</a>, program support, and how to{' '}
-                <a href="#contact">engage our team</a>.
+                For individual homes, apartments, and housing communities, RenewG turns rooftop capacity,
+                subsidy paperwork, net-metering, and savings estimates into a simple decision path.
               </p>
+              <div className="home-actions">
+                <a className="text-link" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                  Check my rooftop on WhatsApp
+                </a>
+                <a className="text-link" href="#faq">
+                  Read common questions
+                </a>
+              </div>
             </div>
-            <div className="faq-items">
-              {faqItems.map((item) => (
-                <article key={item.question} className="faq-item">
-                  <h3>{item.question}</h3>
-                  <p>{item.answer}</p>
+
+            <figure className="homes-media" data-reveal>
+              <img src={residentialImage} alt="Residential rooftop solar consultation with homeowner" loading="lazy" />
+            </figure>
+          </div>
+        </section>
+
+        <section className="section products" id="batteries">
+          <div className="container">
+            <div className="product-intro" data-reveal>
+              <div className="section-heading compact">
+                <p className="eyebrow">Inverter batteries</p>
+                <h2>ARENQ LiFePO4 lithium batteries for solar and home backup.</h2>
+                <p>
+                  Customers searching for lithium inverter battery, solar inverter battery, tubular battery
+                  replacement, or smart BMS battery can ask RenewG for the right ARENQ model, current price,
+                  stock, and compatibility guidance.
+                </p>
+              </div>
+              <a className="btn btn-product" href={createWhatsappHref('Hi RenewG, I want to buy an ARENQ lithium inverter battery. Please share price and availability.')} target="_blank" rel="noopener noreferrer">
+                <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
+                Ask battery price
+              </a>
+            </div>
+
+            <div className="product-grid">
+              {batteryProducts.map((product) => (
+                <article className="product-card" key={product.name} data-reveal>
+                  <div className="product-image">
+                    <img src={product.image} alt={product.alt} loading="lazy" />
+                  </div>
+                  <div className="product-body">
+                    <p className="product-label">{product.searchLabel}</p>
+                    <h3>{product.name}</h3>
+                    <p>{product.summary}</p>
+                    <ul>
+                      {product.specs.map((spec) => (
+                        <li key={spec}>{spec}</li>
+                      ))}
+                    </ul>
+                    <a
+                      className="product-whatsapp"
+                      href={createWhatsappHref(`Hi RenewG, I want to buy ${product.name}. Please share price, stock, delivery, and inverter compatibility details.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ask / buy on WhatsApp
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="cta" id="contact">
-          <div className="container cta-content">
-            <h2>Ready to launch your next solar or storage project?</h2>
+        <section className="section trading" id="trading">
+          <div className="container trading-grid">
+            <div className="section-heading compact" data-reveal>
+              <p className="eyebrow">Product trading</p>
+              <h2>Procurement support for installers, EPC teams, and end customers.</h2>
+              <p>
+                RenewG sources authenticated solar panels, inverters, ARENQ lithium batteries, storage systems,
+                EV charging, and balance-of-system equipment with practical technical guidance and after-sales
+                coordination.
+              </p>
+            </div>
+
+            <div className="trading-panel" data-reveal>
+              <img src={iconTrading} alt="" aria-hidden="true" width="56" height="56" loading="lazy" />
+              <ul>
+                {tradingItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="section faq" id="faq" aria-labelledby="faq-title">
+          <div className="container faq-grid">
+            <div className="section-heading compact" data-reveal>
+              <p className="eyebrow">FAQ</p>
+              <h2 id="faq-title">Questions customers ask before going solar.</h2>
+              <p>
+                These are the first checks RenewG usually handles before capacity, commercial terms, or
+                implementation timelines are finalised.
+              </p>
+            </div>
+
+            <div className="faq-list" data-reveal>
+              {faqItems.map((item, index) => (
+                <details key={item.question} open={index === 0}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="contact" id="contact">
+          <div className="container contact-inner" data-reveal>
+            <p className="eyebrow">Start here</p>
+            <h2>Send one electricity bill. Get a practical solar path.</h2>
             <p>
-              Partner with RenewG to design, build, and operate sustainable energy systems tailored to your business or community
-              goals.
+              Share your bill, site location, and roof or land details. RenewG will help you understand capacity,
+              savings, storage needs, and the right next step.
             </p>
-            <div className="cta-actions">
-              <a className="btn primary" href="mailto:hello@renewg.in">Schedule a consultation</a>
-              <a className="btn whatsapp light" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+            <div className="contact-actions">
+              <a className="btn btn-primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
                 <img src={iconWhatsapp} alt="" aria-hidden="true" className="btn-icon" />
-                Chat on WhatsApp
+                WhatsApp RenewG
+              </a>
+              <a className="btn btn-secondary dark" href="mailto:hello@renewg.in">
+                Email hello@renewg.in
               </a>
             </div>
           </div>
@@ -438,7 +531,6 @@ export default function App() {
 
       <a className="whatsapp-float" href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat">
         <img src={iconWhatsapp} alt="" aria-hidden="true" />
-        <span className="sr-only">Chat with RenewG on WhatsApp</span>
       </a>
 
       <footer className="site-footer">
@@ -447,24 +539,27 @@ export default function App() {
             <a className="logo footer-logo" href="#top" aria-label="RenewG home">
               <img src={logo} alt="RenewG logo" width="160" loading="lazy" />
             </a>
-            <p>Solar EPC specialists empowering Karnataka with intelligent, connected energy ecosystems.</p>
+            <p>Solar EPC, lithium-ion storage, EV charging, and energy product trading across Karnataka.</p>
           </div>
+
           <div>
             <h3>Contact</h3>
             <ul>
               {phoneContacts.map((contact) => (
                 <li key={contact.tel}>
-                  {contact.label}:{' '}
-                  <a href={`tel:${contact.tel}`}>{contact.display}</a>
+                  {contact.label}: <a href={`tel:${contact.tel}`}>{contact.display}</a>
                   {contact.isWhatsapp ? ' (WhatsApp)' : ''}
                 </li>
               ))}
-              <li>Email: hello@renewg.in</li>
-              <li>Address: Suncity Thokkutu, 1st Floor, No. 3-3 (39), Mangaluru Taluku, Ullal, Dakshina Kannada, Karnataka - 575017</li>
+              <li>
+                Email: <a href="mailto:hello@renewg.in">hello@renewg.in</a>
+              </li>
+              <li>Suncity Thokkutu, Ullal, Dakshina Kannada, Karnataka - 575017</li>
             </ul>
           </div>
+
           <div>
-            <h3>Quick Links</h3>
+            <h3>Explore</h3>
             <ul>
               {navLinks.map((link) => (
                 <li key={`footer-${link.href}`}>
@@ -474,8 +569,9 @@ export default function App() {
             </ul>
           </div>
         </div>
+
         <div className="footer-bottom">
-          <small>© {year} RenewG. All rights reserved.</small>
+          <small>&copy; {year} RenewG. All rights reserved.</small>
         </div>
       </footer>
     </div>

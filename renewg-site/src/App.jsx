@@ -756,7 +756,7 @@ export default function App() {
             <a className="logo footer-logo" href="#top" aria-label="RenewG home">
               <img src={logo} alt="RenewG logo" width="160" loading="lazy" />
             </a>
-            <p>Solar EPC, lithium-ion storage, EV charging, and energy product trading across Karnataka.</p>
+            <p>Solar EPC, lithium-ion storage, EV charging, and energy product trading across Kerala and Karnataka.</p>
           </div>
 
           <div>
